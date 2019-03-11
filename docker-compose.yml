@@ -1,0 +1,39 @@
+version: '3.4'
+
+services:
+  hub:
+    image: selenium/hub:3
+
+  firefox:
+    image: selenium/${SELENIUM_FIREFOX_IMAGE}:3
+    ports:
+      - 5900
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      HUB_HOST: hub
+    depends_on:
+      - hub
+
+  chrome:
+    image: selenium/${SELENIUM_CHROME_IMAGE}:3
+    ports:
+      - 5900
+    volumes:
+      - /dev/shm:/dev/shm
+    environment:
+      HUB_HOST: hub
+    depends_on:
+      - hub
+
+  webapp:
+    image: ${DIST_IMAGE}
+
+  webdriverio:
+    image: ${TEST_IMAGE}
+    command: wait-for-hub npm run e2e-ci
+    volumes:
+      - ./bin/wait-for-hub:/bin/wait-for-hub
+    depends_on:
+      - hub
+      - webapp

@@ -1,0 +1,21 @@
+version: v1.0
+name: Build Pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: "Build"
+    task:
+      secrets:
+        - name: next-pipeline-example-secrets
+      jobs:
+      - name: Run build
+        commands:
+          - checkout
+          - echo $DOCKER_PASSWORD | docker login --username $DOCKER_USERNAME --password-stdin;
+          - make test
+          - make analysis
+          - make audit
+          - make e2e
+          - make publish-image

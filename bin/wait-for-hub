@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+browser-is-ready() {
+  curl -fsN http://hub:4444/grid/console | grep -q $1
+}
+
+until browser-is-ready firefox && browser-is-ready chrome; do
+  sleep 1
+done
+
+>&2 echo "Hub is ready with Chrome and Firefox"
+
+exec $@

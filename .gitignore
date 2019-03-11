@@ -1,0 +1,8 @@
+.semaphore/secrets.yml
+.eslintcache
+.next
+coverage
+dist
+dist.tar
+node_modules
+reports

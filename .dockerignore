@@ -1,0 +1,11 @@
+.editorconfig
+.eslintcache
+.gitignore
+.next
+bin
+coverage
+dist
+docker-compose.yml
+Makefile
+node_modules
+README.md
