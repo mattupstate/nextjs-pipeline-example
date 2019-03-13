@@ -124,6 +124,10 @@ Finally, here are some notes that describe some of the underlying details.
 
 Next.js application source code is located in the `src` folder and WebdriverIO end-to-end test source code is located in the `e2e` folder. This is not the conventional, default structure for a Next.js application. I prefer this structure for the isolation is affords between the two source sets. The `scripts` section in `package.json` have been adjusted to account for this separation.
 
+### WebdriverIO Usage
+
+I chose WebDriverIO to implement the end-to-end tests because it seems to offer the most flexibility compared to other tools in the space. I've provided two configuration files. One for local development and one for the CI context. The local configuration is designed for faster feedback. It runs the Next.js server programatically to manage the lifecycle of the server while running the tests. I recognize that there is likely a slight difference in this approach relative to the configuration used for the CI context, which uses a statically exported version of the Next.js application.
+
 ### Docker Usage
 
 I've purposely not used the `--rm` flag for `docker run` commands. Leaving containers around after executing commands can be helpful when debugging. It also affords me the ability to copy resources out of a stopped container to the host.
