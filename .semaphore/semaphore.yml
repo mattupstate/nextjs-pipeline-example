@@ -8,7 +8,7 @@ blocks:
   - name: "Build"
     task:
       secrets:
-        - name: next-pipeline-example-secrets
+        - name: nextjs-pipeline-example-secrets
       jobs:
       - name: Run build
         commands:
