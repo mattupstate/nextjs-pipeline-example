@@ -10,8 +10,7 @@ module.exports = {
   },
   'extends': [
     'standard',
-    'plugin:react/recommended',
-    'plugin:jest/recommended'
+    'plugin:react/recommended'
   ],
   'globals': {
     'Atomics': 'readonly',
@@ -30,5 +29,13 @@ module.exports = {
   ],
   'rules': {
     'react/react-in-jsx-scope': 0
-  }
+  },
+  'overrides': [
+    {
+      'env': {
+        'jest': true
+      },
+      'files': ['*.test.js']
+    }
+  ]
 }
