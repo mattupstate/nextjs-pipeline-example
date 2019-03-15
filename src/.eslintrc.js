@@ -10,7 +10,8 @@ module.exports = {
   },
   'extends': [
     'standard',
-    'plugin:react/recommended'
+    'plugin:react/recommended',
+    'plugin:security/recommended'
   ],
   'globals': {
     'Atomics': 'readonly',
@@ -25,7 +26,8 @@ module.exports = {
   },
   'plugins': [
     'react',
-    'jest'
+    'jest',
+    'security'
   ],
   'rules': {
     'react/react-in-jsx-scope': 0
